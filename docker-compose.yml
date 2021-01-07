@@ -1,0 +1,18 @@
+services:
+  app:
+    image: next-app
+    build: .
+    command: bash -c "yarn dev"
+    # command: bash -c "echo $PATH"
+    ports:
+      - 3000:3000
+    volumes:
+      - ./:/usr/local/app/
+      - node_modules:/usr/local/node_modules/
+      - next:/usr/local/app/.next/
+    stdin_open: true # docker run -i
+    tty: true # docker run -t
+
+volumes:
+  node_modules:
+  next:
